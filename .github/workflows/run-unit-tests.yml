@@ -6,7 +6,9 @@ jobs:
   run-unit-tests:
     name: Run Unit Tests
     runs-ons: ubuntu-latest
-    working-directory: ./03-api-solid
+    
+    default:
+      working-directory: ./03-api-solid
 
     steps:
     - uses: actions/checkout@v3
