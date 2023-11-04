@@ -9,16 +9,16 @@ jobs:
     
     defaults:
       run:
-        working-directory: 03-api-solid
+        working-directory: ./03-api-solid
 
     steps:
-    - uses: actions/checkout@v3
+      - uses: actions/checkout@v3
 
-    - uses: actions/setup-node@v3
-      with:
-        node-version: 18
-        cache: 'npm'
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'npm'
 
-    - run: npm ci
-    
-    - run: npm test
+      - run: npm ci
+      
+      - run: npm run test
