@@ -14,6 +14,8 @@ jobs:
         with:
           node-version: 18
           cache: 'npm'
+          
+      working-directory: ./03-api-solid
 
       - run: npm ci
       
