@@ -5,10 +5,11 @@ on: [push]
 jobs: 
   run-unit-tests:
     name: Run Unit Tests
-    runs-ons: ubuntu-latest
+    runs-on: ubuntu-latest
     
-    default:
-      working-directory: ./03-api-solid
+    defaults:
+      run:
+        working-directory: ./03-api-solid
 
     steps:
     - uses: actions/checkout@v3
