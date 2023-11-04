@@ -9,7 +9,7 @@ jobs:
     
     defaults:
       run:
-        working-directory: ./03-api-solid
+        working-directory: ../../03-api-solid
 
     steps:
       - uses: actions/checkout@v3
