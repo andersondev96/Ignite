@@ -33,7 +33,7 @@ describe('Validate Check In Use Case', () => {
     expect(checkInsRepository.items[0].validated_at).toEqual(expect.any(Date))
   })
 
-  it('should be able to validate an inexistent check-in', async () => {
+  it('should not be able to validate an inexistent check-in', async () => {
     await expect(() =>
       sut.execute({
         checkInId: 'inexistent-check-in-id',
