@@ -1,9 +1,9 @@
 import {
-    Body,
-    Controller,
-    Post,
-    UnauthorizedException,
-    UsePipes,
+  Body,
+  Controller,
+  Post,
+  UnauthorizedException,
+  UsePipes,
 } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 import { compare } from 'bcryptjs'
