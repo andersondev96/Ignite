@@ -2,7 +2,7 @@ import { PaginationParams } from '@/core/repositories/pagination-params'
 import { QuestionsRepository } from '@/domain/forum/application/repositories/questions-repository'
 import { Question } from '@/domain/forum/enterprise/entities/question'
 import { Injectable } from '@nestjs/common'
-import { PrimaQuestionMapper } from '../mappers/prisma-question.mapper'
+import { PrismaQuestionMapper } from '../mappers/prisma-question.mapper'
 import { PrismaService } from '../prisma.service'
 
 @Injectable()
@@ -20,7 +20,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
       return null
     }
 
-    return PrimaQuestionMapper.toDomain(question)
+    return PrismaQuestionMapper.toDomain(question)
   }
 
   async findBySlug(slug: string): Promise<Question | null> {
@@ -34,7 +34,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
       return null
     }
 
-    return PrimaQuestionMapper.toDomain(question)
+    return PrismaQuestionMapper.toDomain(question)
   }
 
   async findManyRecent({ page }: PaginationParams): Promise<Question[]> {
@@ -46,11 +46,11 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
       skip: (page - 1) * 20,
     })
 
-    return questions.map(PrimaQuestionMapper.toDomain)
+    return questions.map(PrismaQuestionMapper.toDomain)
   }
 
   async create(question: Question): Promise<void> {
-    const data = PrimaQuestionMapper.toPrisma(question)
+    const data = PrismaQuestionMapper.toPrisma(question)
 
     await this.prisma.question.create({
       data,
@@ -58,7 +58,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
   }
 
   async save(question: Question): Promise<void> {
-    const data = PrimaQuestionMapper.toPrisma(question)
+    const data = PrismaQuestionMapper.toPrisma(question)
 
     await this.prisma.question.update({
       where: {
@@ -69,7 +69,7 @@ export class PrismaQuestionsRepository implements QuestionsRepository {
   }
 
   async delete(question: Question): Promise<void> {
-    const data = PrimaQuestionMapper.toPrisma(question)
+    const data = PrismaQuestionMapper.toPrisma(question)
 
     await this.prisma.question.delete({
       where: {
