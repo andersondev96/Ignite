@@ -2,12 +2,12 @@ import { EditAnswerUseCase } from '@/domain/forum/application/use-cases/edit-ans
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import {
-    BadRequestException,
-    Body,
-    Controller,
-    HttpCode,
-    Param,
-    Put,
+  BadRequestException,
+  Body,
+  Controller,
+  HttpCode,
+  Param,
+  Put,
 } from '@nestjs/common'
 import { z } from 'zod'
 import { ZodValidationPipe } from '../pipes/zod-validation-pipe'
