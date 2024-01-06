@@ -2,11 +2,11 @@ import { DeleteAnswerUseCase } from '@/domain/forum/application/use-cases/delete
 import { CurrentUser } from '@/infra/auth/current-user-decorator'
 import { UserPayload } from '@/infra/auth/jwt.strategy'
 import {
-    BadRequestException,
-    Controller,
-    Delete,
-    HttpCode,
-    Param,
+  BadRequestException,
+  Controller,
+  Delete,
+  HttpCode,
+  Param,
 } from '@nestjs/common'
 
 @Controller('/answers/:id')
