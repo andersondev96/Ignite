@@ -1,4 +1,4 @@
-import { FetchQuestionCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-question-comments'
+import { FetchAnswerCommentsUseCase } from '@/domain/forum/application/use-cases/fetch-answer-comments'
 import {
   BadRequestException,
   Controller,
@@ -21,26 +21,26 @@ const queryValidationPipe = new ZodValidationPipe(pageQueryParamSchema)
 
 type pageQueryParamSchema = z.infer<typeof pageQueryParamSchema>
 
-@Controller('/questions/:questionId/comments')
-export class FetchQuestionCommentsController {
-  constructor(private fetchQuestionComments: FetchQuestionCommentsUseCase) {}
+@Controller('/answers/:answerId/comments')
+export class FetchAnswerCommentsController {
+  constructor(private fetchAnswerComments: FetchAnswerCommentsUseCase) {}
 
   @Get()
   async handle(
     @Query('page', queryValidationPipe) page: pageQueryParamSchema,
-    @Param('questionId') questionId: string,
+    @Param('answerId') answerId: string,
   ) {
-    const result = await this.fetchQuestionComments.execute({
+    const result = await this.fetchAnswerComments.execute({
       page,
-      questionId,
+      answerId,
     })
 
     if (result.isLeft()) {
       throw new BadRequestException()
     }
 
-    const questionComments = result.value.questionComments
+    const answerComments = result.value.answerComments
 
-    return { comments: questionComments.map(CommentPresenter.toHTTP) }
+    return { comments: answerComments.map(CommentPresenter.toHTTP) }
   }
 }
