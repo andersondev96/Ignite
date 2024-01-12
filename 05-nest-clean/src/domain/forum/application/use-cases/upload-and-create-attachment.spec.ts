@@ -1,18 +1,18 @@
 import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
 import { FakeUploader } from 'test/storage/fake-uploader'
 import { InvalidAttachmentType } from './errors/invalid-attachment-type'
-import { UploadAndCreateAttachmentUseCase } from './upload-and-create-attachment'
+import { UploadAndCreateAttachment } from './upload-and-create-attachment'
 
 let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 let fakeUploader: FakeUploader
-let sut: UploadAndCreateAttachmentUseCase
+let sut: UploadAndCreateAttachment
 
 describe('Upload and create attachment', () => {
   beforeEach(() => {
     inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     fakeUploader = new FakeUploader()
 
-    sut = new UploadAndCreateAttachmentUseCase(
+    sut = new UploadAndCreateAttachment(
       inMemoryAttachmentsRepository,
       fakeUploader,
     )
