@@ -1,18 +1,18 @@
 import { InMemoryAttachmentsRepository } from 'test/repositories/in-memory-attachments-repository'
 import { FakeUploader } from 'test/storage/fake-uploader'
-import { InvalidAttachmentType } from './errors/invalid-attachment-type'
-import { UploadAndCreateAttachment } from './upload-and-create-attachment'
+import { InvalidAttachmentTypeError } from './errors/invalid-attachment-type-error'
+import { UploadAndCreateAttachmentUseCase } from './upload-and-create-attachment'
 
 let inMemoryAttachmentsRepository: InMemoryAttachmentsRepository
 let fakeUploader: FakeUploader
-let sut: UploadAndCreateAttachment
+let sut: UploadAndCreateAttachmentUseCase
 
 describe('Upload and create attachment', () => {
   beforeEach(() => {
     inMemoryAttachmentsRepository = new InMemoryAttachmentsRepository()
     fakeUploader = new FakeUploader()
 
-    sut = new UploadAndCreateAttachment(
+    sut = new UploadAndCreateAttachmentUseCase(
       inMemoryAttachmentsRepository,
       fakeUploader,
     )
@@ -45,6 +45,6 @@ describe('Upload and create attachment', () => {
     })
 
     expect(result.isLeft()).toBe(true)
-    expect(result.value).toBeInstanceOf(InvalidAttachmentType)
+    expect(result.value).toBeInstanceOf(InvalidAttachmentTypeError)
   })
 })
